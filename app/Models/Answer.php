@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Quiz extends Model
+class Answer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['is_correct', 'content', 'quote_id'];
 
 
-    public function quotes()
-    {
-        return $this->hasMany(Quote::class);
-    }
 }
