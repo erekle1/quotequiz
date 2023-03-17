@@ -3,7 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuoteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +33,18 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::controller(QuizController::class)->prefix('quiz')->group(function(){
+        Route::get('quiz','index');
+    });
+
+    Route::controller(QuoteController::class)->prefix('quote')->group(function(){
+        Route::get('/','index')->name('quote');
+        Route::get('/create','create')->name('quote.create');
+        Route::post('/store','store')->name('quote.store');
+    });
+
 });
+
+
+

@@ -17,5 +17,4 @@ class Quote extends Model
         return $this->hasMany(Answer::class);
     }
 
-
 }

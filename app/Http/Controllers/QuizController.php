@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class QuizController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
-        //
+        $quizzes = Quiz::limit(100)->get();
+
+        return Inertia::render('Admin/Quiz/Index', $quizzes);
     }
 
     /**
